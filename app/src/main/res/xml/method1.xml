@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<input-method xmlns:android="http://schemas.android.com/apk/res/android">
+    <subtype
+        android:label="Qazaq (Latin)"
+        android:imeSubtypeLocale="qazaq (Qazaqstan)"
+        android:imeSubtypeMode="keyboard"
+        />
+<!--   android:imeSubtypeLocale="en_US"  -->
+</input-method>

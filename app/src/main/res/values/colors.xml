@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1a1a1a</color>
+    <color name="colorPrimaryDark">#17202A</color>
+    <color name="colorAccent">#1a1a1a</color>
+
+    <color name="keyboard_background_color">#1a1a1a</color>
+    <color name="keyboard_divider">#17202A</color>
+    <color name="keyboard_pressed">#babdc4</color>
+</resources>
+<!-- #34495e,#2c3e50
+colorPrimary - blue,
+colorPrimaryDark - darkBlue
+colorAccent - pink
+
+pressed Grey babdc4
+
+ <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+-->
