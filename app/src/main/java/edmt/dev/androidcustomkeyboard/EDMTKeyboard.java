@@ -27,7 +27,7 @@ public class EDMTKeyboard extends InputMethodService implements KeyboardView.OnK
     private boolean isQwerty=true;
     private boolean isKZ = true;
     private  boolean isCaps = false;
-
+    private boolean autoCapitalise=false;
 
     private KeyboardViewMine keyboardViewMine;
     //Press Ctrl+O
