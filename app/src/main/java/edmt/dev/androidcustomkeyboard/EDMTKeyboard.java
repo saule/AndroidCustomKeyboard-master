@@ -27,15 +27,11 @@ public class EDMTKeyboard extends InputMethodService implements KeyboardView.OnK
     private boolean isQwerty=true;
     private boolean isKZ = true;
     private  boolean isCaps = false;
-    private boolean autoCapitalise=false;
+    private int beforeKey=-1000;
+    private boolean capsAll=false;
 
     private KeyboardViewMine keyboardViewMine;
     //Press Ctrl+O
-
-
-
-
-
 
 
     @Override
@@ -82,7 +78,9 @@ public class EDMTKeyboard extends InputMethodService implements KeyboardView.OnK
                 ic.deleteSurroundingText(1,0);
                 break;
             case Keyboard.KEYCODE_SHIFT:
+                System.out.println("shift");
                 isCaps = !isCaps;
+                capsAll=false;
                 //keyboardViewMine.onDraw(canvas???);
                 keyboard.setShifted(isCaps);
                 kv.invalidateAllKeys();
@@ -161,11 +159,36 @@ public class EDMTKeyboard extends InputMethodService implements KeyboardView.OnK
                     isKZ=true;
                     break;
                 }
-
+            //-100 if caps lock long press
+            //turn caps lock on
+            case -100:
+                System.out.println("caps on -100");
+                capsAll=true;
+                isCaps=true;
+                keyboard.setShifted(isCaps);
+                kv.invalidateAllKeys();
+                break;
+            //32 is a space key
+            //if end of sentence turn autocapitalisation
+            case 32:
+                if(beforeKey==46){
+                    isCaps=true;
+                    beforeKey=32;
+                    keyboard.setShifted(isCaps);
+                    kv.invalidateAllKeys();
+                }
             default:
                 char code = (char)i;
-                if(Character.isLetter(code) && isCaps)
-                        code = Character.toUpperCase(code);
+                if(Character.isLetter(code) && isCaps) {
+                    code = Character.toUpperCase(code);
+                    if(!capsAll) {
+                        isCaps = !isCaps;
+                        //keyboardViewMine.onDraw(canvas???);
+                        keyboard.setShifted(isCaps);
+                        kv.invalidateAllKeys();
+                    }
+                }
+                beforeKey=i;
                 ic.commitText(String.valueOf(code),1);
         }
 

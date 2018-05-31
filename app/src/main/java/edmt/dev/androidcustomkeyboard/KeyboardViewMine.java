@@ -23,6 +23,13 @@ public class KeyboardViewMine extends KeyboardView implements KeyboardView.OnKey
     @Override
     protected boolean onLongPress(Keyboard.Key popupKey) {
         boolean keyPress = false;
+        //long press will turn on CAPS lock
+        if (popupKey.codes[0] == -1){
+            OnKeyboardActionListener onKeyboardActionListener = getOnKeyboardActionListener();
+            System.out.println("caps long press");
+            onKeyboardActionListener.onKey(-100,null);
+            keyPress=true;
+        }
         if (popupKey.codes[0] == 121) {
             getOnKeyboardActionListener().onKey('ý', null);
             //Toast.makeText(this.getContext(),"code replaced",Toast.LENGTH_LONG).show();
